@@ -21,13 +21,20 @@ import triangles.model.Model;
 public class TrianglesApp extends JFrame {
 
 	private JPanel contentPane;
-	Model model;
 	TrianglesDrawer panel;
 	
-	public TrianglesDrawer getPanel() {
-		return panel;
-	}
-
+	Model model;
+	JButton btnSwapEdges, btnUnselectAll, btnReset;
+	JLabel actualMoves, actualScore;
+	
+	public TrianglesDrawer getPuzzlePanel() { return panel; }
+	public JButton getSwapEdgesButton() { return btnSwapEdges; }
+	public JButton getUnselectAllButton() { return btnUnselectAll; }
+	public JButton getResetButton() { return btnReset; }
+	
+	public JLabel getActualMovesLabel() { return actualMoves; }
+	public JLabel getActualScoreLabel() { return actualMoves; }
+	
 	/**
 	 * Create the frame.
 	 */
@@ -73,9 +80,10 @@ public class TrianglesApp extends JFrame {
 		
 		JLabel lblScore = new JLabel("Score:");
 		
-		JLabel playerMovesLabel = new JLabel("0");
+		actualMoves = new JLabel("0");
 		
-		JLabel lblNewLabel = new JLabel("0");
+		actualScore = new JLabel("0");
+
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -93,8 +101,8 @@ public class TrianglesApp extends JFrame {
 								.addComponent(lblScore))
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel)
-								.addComponent(playerMovesLabel))))
+								.addComponent(actualScore)
+								.addComponent(actualMoves))))
 					.addContainerGap(155, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -105,11 +113,11 @@ public class TrianglesApp extends JFrame {
 							.addContainerGap()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblMoves)
-								.addComponent(playerMovesLabel))
+								.addComponent(actualMoves))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblScore)
-								.addComponent(lblNewLabel))
+								.addComponent(actualScore))
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnReset)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
