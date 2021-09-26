@@ -2,6 +2,8 @@ package triangles;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import triangles.model.Edge;
 import triangles.model.Model;
@@ -120,6 +122,94 @@ public class Main {
 		puzzle.getNodes().get(9).addAdjNode(puzzle.getNodes().get(8));
 		
 		// create edges
-		//puzzle.addEdge(new Edge(Color.RED, puzzle.getNodes().get(9).getAdjNodes())); // test
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(6), 
+						puzzle.getNodes().get(3)))));
+
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(3), 
+						puzzle.getNodes().get(1)))));
+		
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(1), 
+						puzzle.getNodes().get(0)))));
+		
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(0), 
+						puzzle.getNodes().get(2)))));
+		
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(2), 
+						puzzle.getNodes().get(5)))));
+		
+		puzzle.addEdge(new Edge(Color.RED, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(5), 
+						puzzle.getNodes().get(9)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(6), 
+						puzzle.getNodes().get(7)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(7), 
+						puzzle.getNodes().get(8)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(8), 
+						puzzle.getNodes().get(9)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(3), 
+						puzzle.getNodes().get(4)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(4), 
+						puzzle.getNodes().get(5)))));
+		
+		puzzle.addEdge(new Edge(Color.GREEN, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(1), 
+						puzzle.getNodes().get(2)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(3), 
+						puzzle.getNodes().get(7)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(7), 
+						puzzle.getNodes().get(4)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(4), 
+						puzzle.getNodes().get(8)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(8), 
+						puzzle.getNodes().get(5)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(1), 
+						puzzle.getNodes().get(4)))));
+		
+		puzzle.addEdge(new Edge(Color.BLUE, 
+				new ArrayList<>(Arrays.asList(
+						puzzle.getNodes().get(4), 
+						puzzle.getNodes().get(2)))));
 	}
 }
