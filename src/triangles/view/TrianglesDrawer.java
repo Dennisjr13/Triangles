@@ -43,11 +43,10 @@ public class TrianglesDrawer extends JPanel {
 		
 		graphics.drawString("test", 10, 10);
 		
-		// TODO: do the math and figure out WHERE to draw all the boxes (nodes), lines (edges)
-		
 		// TODO: Draw entire puzzle here
 		TrianglePuzzle puzzle = model.getPuzzle();
 
+		// draw edges first
 		for (Edge edge : puzzle.getEdges()) {
 			// set start/end of Edge to middle of each Node
 			graphics.setColor(edge.getColor());
@@ -58,6 +57,7 @@ public class TrianglesDrawer extends JPanel {
 					edge.getNodes().get(1).getY() + edge.getNodes().get(0).getSize()/2);
 		}
 		
+		// draw nodes over the edges
 		for (Node node : puzzle.getNodes()) {
 			if (node.isSelected()) {
 				graphics.setColor(Color.BLACK);

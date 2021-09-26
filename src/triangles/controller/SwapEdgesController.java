@@ -1,5 +1,6 @@
 package triangles.controller;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import triangles.model.Edge;
@@ -44,18 +45,26 @@ public class SwapEdgesController {
 		
 		if (edgesToSwap.size() == 2) {
 			// 2 edge swap
-			ArrayList<Node> firstEdgeNodes = new ArrayList<Node>(edgesToSwap.get(0).getNodes());
-			edgesToSwap.get(0).setNodes(edgesToSwap.get(1).getNodes());
-			edgesToSwap.get(1).setNodes(firstEdgeNodes);
+			Color firstEdgeColor = edgesToSwap.get(0).getColor();
+			edgesToSwap.get(0).setColor(edgesToSwap.get(1).getColor());
+			edgesToSwap.get(1).setColor(firstEdgeColor);
 		} else if (edgesToSwap.size() == 3) {
 			// TODO: 3 edge swap, special case (rotate clockwise)
 			System.out.println("WARN: 3 edges special case, not implemented yet.");
+			
+			
+			// TODO: calculate rightside up triangle, else upsidedown triangle
 			return;
 		} else {
 			System.out.println("ERROR: Invalid state, " + edgesToSwap.size() + " selected.");
 			return;
 		}
-
+		
+		model.setNumMoves(model.getNumMoves() + 1);
+		// TODO: calculate score
+		
+		app.getActualMovesLabel().setText("" + model.getNumMoves());
+		app.getActualScoreLabel().setText("" + model.getScore());
 		app.repaint();
 	}
 }

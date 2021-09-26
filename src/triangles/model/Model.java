@@ -26,8 +26,10 @@ public class Model {
 	}
 	
 	public int getNumMoves() { return numMoves; }
+	public void setNumMoves(int numMoves) { this.numMoves = numMoves; }
 	
 	public int getScore() { return score; }
+	public void setScore(int score) { this.score = score; }
 	
 	public boolean isGameOver() { return gameOver; }
 	public void setGameOver(boolean flag) { gameOver = flag; }
