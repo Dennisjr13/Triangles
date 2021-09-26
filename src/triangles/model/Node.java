@@ -4,22 +4,21 @@ import java.util.ArrayList;
 
 public class Node {
 	public final int size;
+	public final int x;
+	public final int y;
 	boolean isSelected;
-	int x;
-	int y;
 	ArrayList<Node> adjNodes = new ArrayList<Node>();
 
-	public Node(int size) {
+	public Node(int size, int x, int y) {
 		this.size = size;
+		this.x = x;
+		this.y = y;
 	}
 	
 	public int getSize() { return size; }
 	
 	public boolean isSelected() { return isSelected; }
 	public void setSelected(boolean flag) { isSelected = flag; }
-	
-	public void setX(int x) { this.x = x; }
-	public void setY(int y) { this.y = y; }
 	
 	public int getX() { return x; }
 	public int getY() { return y; }

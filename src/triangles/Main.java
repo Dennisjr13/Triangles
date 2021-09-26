@@ -1,7 +1,9 @@
 package triangles;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
+import triangles.model.Edge;
 import triangles.model.Model;
 import triangles.model.Node;
 import triangles.model.TrianglePuzzle;
@@ -28,47 +30,47 @@ public class Main {
 		 *  6()  7()  8()  9()
 		 * 
 		 */
-		// create all nodes, dynamic spacing based on JPanel size
+		// create nodes, with dynamic spacing based on JPanel size
 		Dimension panelSize = trianglesApp.getPuzzlePanel().getSize();
-		puzzle.addNode(new Node(nodeSize), // Node0
+		puzzle.addNode(new Node(nodeSize, // Node0
 				4*(panelSize.width/8) - (nodeSize/2), 
-				1*(panelSize.height/5) - (nodeSize/2));
+				1*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node1
+		puzzle.addNode(new Node(nodeSize, // Node1
 				3*(panelSize.width/8) - (nodeSize/2), 
-				2*(panelSize.height/5) - (nodeSize/2));
+				2*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node2
+		puzzle.addNode(new Node(nodeSize, // Node2
 				5*(panelSize.width/8) - (nodeSize/2), 
-				2*(panelSize.height/5) - (nodeSize/2));
+				2*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node3
+		puzzle.addNode(new Node(nodeSize, // Node3
 				2*(panelSize.width/8) - (nodeSize/2), 
-				3*(panelSize.height/5) - (nodeSize/2));
+				3*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node4
+		puzzle.addNode(new Node(nodeSize, // Node4
 				4*(panelSize.width/8) - (nodeSize/2), 
-				3*(panelSize.height/5) - (nodeSize/2));
+				3*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node5
+		puzzle.addNode(new Node(nodeSize, // Node5
 				6*(panelSize.width/8) - (nodeSize/2),
-				3*(panelSize.height/5) - (nodeSize/2));
+				3*(panelSize.height/5) - (nodeSize/2)));
 
-		puzzle.addNode(new Node(nodeSize), // Node6
+		puzzle.addNode(new Node(nodeSize, // Node6
 				1*(panelSize.width/8) - (nodeSize/2), 
-				4*(panelSize.height/5) - (nodeSize/2));
+				4*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node7
+		puzzle.addNode(new Node(nodeSize, // Node7
 				3*(panelSize.width/8) - (nodeSize/2), 
-				4*(panelSize.height/5) - (nodeSize/2));
+				4*(panelSize.height/5) - (nodeSize/2)));
 		
-		puzzle.addNode(new Node(nodeSize), // Node8
+		puzzle.addNode(new Node(nodeSize, // Node8
 				5*(panelSize.width/8) - (nodeSize/2),
-				4*(panelSize.height/5) - (nodeSize/2));
+				4*(panelSize.height/5) - (nodeSize/2)));
 	
-		puzzle.addNode(new Node(nodeSize), // Node9
+		puzzle.addNode(new Node(nodeSize, // Node9
 				7*(panelSize.width/8) - (nodeSize/2),
-				4*(panelSize.height/5) - (nodeSize/2));
+				4*(panelSize.height/5) - (nodeSize/2)));
 		
 		//  set adjNodes
 		puzzle.getNodes().get(0).addAdjNode(puzzle.getNodes().get(1));
@@ -117,6 +119,7 @@ public class Main {
 		puzzle.getNodes().get(9).addAdjNode(puzzle.getNodes().get(5));
 		puzzle.getNodes().get(9).addAdjNode(puzzle.getNodes().get(8));
 		
-		// TODO: create edges
+		// create edges
+		//puzzle.addEdge(new Edge(Color.RED, puzzle.getNodes().get(9).getAdjNodes())); // test
 	}
 }

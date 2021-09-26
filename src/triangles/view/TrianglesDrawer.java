@@ -41,26 +41,35 @@ public class TrianglesDrawer extends JPanel {
 			return;
 		}
 		
+		graphics.drawString("test", 10, 10);
+		
 		// TODO: do the math and figure out WHERE to draw all the boxes (nodes), lines (edges)
 		
 		// TODO: Draw entire puzzle here
-		graphics.drawString("test", 100, 100);
-		
 		TrianglePuzzle puzzle = model.getPuzzle();
-		for (Node node : puzzle.getNodes()) {
-			if (node.isSelected()) {
-				graphics.setColor(Color.black);
-			} else {
-				graphics.setColor(Color.white);
-			}
-			
-			graphics.fillRect(node.getX(), node.getY(), node.getSize(), node.getSize());
+
+		for (Edge edge : puzzle.getEdges()) {
+			// set start/end of Edge to middle of each Node
+			graphics.setColor(edge.getColor());
+			graphics.drawLine(
+					edge.getNodes().get(0).getX() + edge.getNodes().get(0).getSize()/2,
+					edge.getNodes().get(0).getY() + edge.getNodes().get(0).getSize()/2,
+					edge.getNodes().get(1).getX() + edge.getNodes().get(0).getSize()/2,
+					edge.getNodes().get(1).getY() + edge.getNodes().get(0).getSize()/2);
 		}
 		
-		for (Edge edge : puzzle.getEdges()) {
-			// TODO: set color
+		for (Node node : puzzle.getNodes()) {
+			if (node.isSelected()) {
+				graphics.setColor(Color.BLACK);
+			} else {
+				graphics.setColor(Color.WHITE);
+			}
 			
-			graphics.drawString("test", 100, 100);
+			graphics.fillRect(
+					node.getX(), 
+					node.getY(), 
+					node.getSize(), 
+					node.getSize());
 		}
 	}
 }

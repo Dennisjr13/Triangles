@@ -1,6 +1,9 @@
 package triangles.controller;
 
+import triangles.model.Edge;
 import triangles.model.Model;
+import triangles.model.Node;
+import triangles.model.TrianglePuzzle;
 import triangles.view.TrianglesApp;
 
 public class ResetController {
@@ -14,7 +17,17 @@ public class ResetController {
 	}
 	
 	public void process() {
-		// TODO: implement reset logic here
-		System.out.println("You clicked Reset!");
+		System.out.println("User clicked Reset");
+		TrianglePuzzle puzzle = model.getPuzzle();
+		
+		for (Node node : puzzle.getNodes()) {
+			node.setSelected(false);
+		}
+		
+		for (Edge edge : puzzle.getEdges()) {
+			edge.setNodes(edge.getInitialNodes());
+		}
+		
+		app.repaint();
 	}
 }
