@@ -1,6 +1,7 @@
 package triangles.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -13,7 +14,6 @@ import triangles.model.TrianglePuzzle;
 public class TrianglesDrawer extends JPanel {
 
 	Model model;
-	int boxSize;
 	
 	/**
 	 * Create the panel.
@@ -32,7 +32,7 @@ public class TrianglesDrawer extends JPanel {
 		}
 		
 		// TODO: do the math and figure out WHERE to draw all the boxes (nodes), lines (edges)
-
+		
 		// TODO: Draw entire puzzle here
 		graphics.drawString("test", 100, 100);
 		
@@ -53,5 +53,6 @@ public class TrianglesDrawer extends JPanel {
 			graphics.drawString("test", 100, 100);
 		}
 	}
-
+	
+	public Dimension getPanelSize() { return getSize(); }
 }
