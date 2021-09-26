@@ -33,7 +33,7 @@ public class TrianglesApp extends JFrame {
 	public JButton getResetButton() { return btnReset; }
 	
 	public JLabel getActualMovesLabel() { return actualMoves; }
-	public JLabel getActualScoreLabel() { return actualMoves; }
+	public JLabel getActualScoreLabel() { return actualScore; }
 	
 	/**
 	 * Create the frame.
@@ -80,9 +80,9 @@ public class TrianglesApp extends JFrame {
 		
 		JLabel lblScore = new JLabel("Score:");
 		
-		actualMoves = new JLabel("0");
+		actualMoves = new JLabel("" + model.getNumMoves());
 		
-		actualScore = new JLabel("0");
+		actualScore = new JLabel("" + model.getScore());
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

@@ -25,9 +25,14 @@ public class ResetController {
 		}
 		
 		for (Edge edge : puzzle.getEdges()) {
-			edge.setNodes(edge.getInitialNodes());
+			edge.setColor(edge.getInitialColor());
 		}
 		
+		model.setNumMoves(0);
+		model.setScore(0);
+		
+		app.getActualMovesLabel().setText("" + model.getNumMoves());
+		app.getActualScoreLabel().setText("" + model.getScore());
 		app.repaint();
 	}
 }

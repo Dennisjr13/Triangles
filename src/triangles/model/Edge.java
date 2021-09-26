@@ -4,21 +4,21 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class Edge {
-	public final Color color;
-	public final ArrayList<Node> initialNodes;
-	ArrayList<Node> currentNodes;
+	public final ArrayList<Node> nodes;
+	public final Color initialColor;
+	Color color;
 
 	public Edge (Color color, ArrayList<Node> nodes) {
+		initialColor = color;
 		this.color = color;
-		initialNodes = nodes;
-		currentNodes = nodes;
+		this.nodes = nodes;
 	}
 	
+	public ArrayList<Node> getNodes() { return nodes; }
+	public Color getInitialColor() { return initialColor; }
 	public Color getColor() { return color; }
-	public ArrayList<Node> getNodes() { return currentNodes; }
-	public ArrayList<Node> getInitialNodes() { return initialNodes; }
 	
-	public void setNodes(ArrayList<Node> newNodes) {
-		currentNodes = newNodes;
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }
