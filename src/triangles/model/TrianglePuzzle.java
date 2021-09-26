@@ -9,15 +9,11 @@ public class TrianglePuzzle {
 	
 	ArrayList<Node> nodes = new ArrayList<>();
 	
-	public void addNode(Node node, int x, int y) {
-		// TODO: check overlapping
-		node.setX(x);
-		node.setY(y);
+	public void addNode(Node node) {
 		nodes.add(node);
 	}
 	
 	public void addEdge(Edge edge) {
-		// TODO: check overlapping
 		edges.add(edge);
 		originalEdges.add(edge);
 	}

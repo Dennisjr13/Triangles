@@ -1,6 +1,8 @@
 package triangles.controller;
 
 import triangles.model.Model;
+import triangles.model.Node;
+import triangles.model.TrianglePuzzle;
 import triangles.view.TrianglesApp;
 
 public class UnselectAllController {
@@ -14,7 +16,13 @@ public class UnselectAllController {
 	}
 	
 	public void process() {
-		// TODO: implement unselect all logic here
-		System.out.println("You clicked Unselect All!");
+		System.out.println("User clicked Unselect All");
+		TrianglePuzzle puzzle = model.getPuzzle();
+		
+		for (Node node : puzzle.getNodes()) {
+			node.setSelected(false);
+		}
+		
+		app.repaint();
 	}
 }

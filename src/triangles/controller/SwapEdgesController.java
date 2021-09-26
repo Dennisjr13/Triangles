@@ -15,6 +15,8 @@ public class SwapEdgesController {
 	
 	public void process() {
 		// TODO: implement swap edges logic here
-		System.out.println("You clicked Swap Edges!");
+		System.out.println("User clicked Swap Edges");
+		
+		app.repaint();
 	}
 }
