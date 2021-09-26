@@ -49,12 +49,59 @@ public class SwapEdgesController {
 			edgesToSwap.get(0).setColor(edgesToSwap.get(1).getColor());
 			edgesToSwap.get(1).setColor(firstEdgeColor);
 		} else if (edgesToSwap.size() == 3) {
-			// TODO: 3 edge swap, special case (rotate clockwise)
-			System.out.println("WARN: 3 edges special case, not implemented yet.");
+			// 3 edge swap, special case (rotate clockwise)
+			Edge flatEdge = null;
+			for (Edge edge : edgesToSwap) {
+				if (edge.getNodes().get(0).getY() == edge.getNodes().get(1).getY()) {
+					// found the flat/parallel edge
+					flatEdge = edge;
+				}
+			}
+			edgesToSwap.remove(flatEdge);
 			
+			// get middle Node ("tip") to determine triangle orientation
+			Node middleNode;
+			if (flatEdge.getNodes().contains(edgesToSwap.get(0).getNodes().get(0))) {
+				middleNode = edgesToSwap.get(0).getNodes().get(1);
+			} else {
+				middleNode = edgesToSwap.get(0).getNodes().get(0);
+			}
 			
-			// TODO: calculate rightside up triangle, else upsidedown triangle
-			return;
+			// only slanted edges remain in edgesToSwap, now find the left/right
+			Edge leftEdge;
+			Edge rightEdge;
+			if (edgesToSwap.get(0).getNodes().get(0).equals(middleNode)) {
+				// we grabbed the middle node (which both edges share),
+				// use the other node
+				if (edgesToSwap.get(0).getNodes().get(1).getX() < middleNode.getX()) {
+					leftEdge = edgesToSwap.get(0);
+					rightEdge = edgesToSwap.get(1);
+				} else {
+					leftEdge = edgesToSwap.get(1);
+					rightEdge = edgesToSwap.get(0);
+				}
+			} else if (edgesToSwap.get(0).getNodes().get(0).getX() < middleNode.getX()) {
+				leftEdge = edgesToSwap.get(0);
+				rightEdge = edgesToSwap.get(1);
+			} else {
+				leftEdge = edgesToSwap.get(1);
+				rightEdge = edgesToSwap.get(0);
+			}
+
+			Color leftEdgeColor = leftEdge.getColor();
+			Color rightEdgeColor = rightEdge.getColor();
+			Color flatEdgeColor = flatEdge.getColor();
+			if (middleNode.getY() > flatEdge.getNodes().get(0).getY()) {
+				// upward triangle
+				flatEdge.setColor(leftEdgeColor);
+				rightEdge.setColor(flatEdgeColor);
+				leftEdge.setColor(rightEdgeColor);
+			} else {
+				// downward triangle
+				rightEdge.setColor(leftEdgeColor);
+				flatEdge.setColor(rightEdgeColor);
+				leftEdge.setColor(flatEdgeColor);
+			}
 		} else {
 			System.out.println("ERROR: Invalid state, " + edgesToSwap.size() + " selected.");
 			return;
