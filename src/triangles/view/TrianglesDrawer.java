@@ -3,9 +3,11 @@ package triangles.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 
 import javax.swing.JPanel;
 
+import triangles.model.Coordinate;
 import triangles.model.Edge;
 import triangles.model.Model;
 import triangles.model.Node;
@@ -21,6 +23,14 @@ public class TrianglesDrawer extends JPanel {
 	public TrianglesDrawer(Model model) {
 		this.model = model;
 	}
+	
+	public Dimension getPanelSize() { return getSize(); }
+	
+	public Coordinate pointToCoordinate(Point point) {
+		return new Coordinate(point.x, point.y);
+	}
+	
+	
 	
 	@Override
 	public void paintComponent(Graphics graphics) {
@@ -53,6 +63,4 @@ public class TrianglesDrawer extends JPanel {
 			graphics.drawString("test", 100, 100);
 		}
 	}
-	
-	public Dimension getPanelSize() { return getSize(); }
 }

@@ -28,7 +28,7 @@ public class Main {
 		 *  6()  7()  8()  9()
 		 * 
 		 */
-		// create all nodes here, dynamic spacing based on JPanel size
+		// create all nodes, dynamic spacing based on JPanel size
 		Dimension panelSize = trianglesApp.getPuzzlePanel().getSize();
 		puzzle.addNode(new Node(nodeSize), // Node0
 				4*(panelSize.width/8) - (nodeSize/2), 
@@ -70,6 +70,53 @@ public class Main {
 				7*(panelSize.width/8) - (nodeSize/2),
 				4*(panelSize.height/5) - (nodeSize/2));
 		
-		// TODO: set adjNodes here
+		//  set adjNodes
+		puzzle.getNodes().get(0).addAdjNode(puzzle.getNodes().get(1));
+		puzzle.getNodes().get(0).addAdjNode(puzzle.getNodes().get(2));
+		
+		puzzle.getNodes().get(1).addAdjNode(puzzle.getNodes().get(0));
+		puzzle.getNodes().get(1).addAdjNode(puzzle.getNodes().get(2));
+		puzzle.getNodes().get(1).addAdjNode(puzzle.getNodes().get(3));
+		puzzle.getNodes().get(1).addAdjNode(puzzle.getNodes().get(4));
+		
+		puzzle.getNodes().get(2).addAdjNode(puzzle.getNodes().get(0));
+		puzzle.getNodes().get(2).addAdjNode(puzzle.getNodes().get(1));
+		puzzle.getNodes().get(2).addAdjNode(puzzle.getNodes().get(4));
+		puzzle.getNodes().get(2).addAdjNode(puzzle.getNodes().get(5));
+		
+		puzzle.getNodes().get(3).addAdjNode(puzzle.getNodes().get(1));
+		puzzle.getNodes().get(3).addAdjNode(puzzle.getNodes().get(4));
+		puzzle.getNodes().get(3).addAdjNode(puzzle.getNodes().get(6));
+		puzzle.getNodes().get(3).addAdjNode(puzzle.getNodes().get(7));
+		
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(1));
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(2));
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(3));
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(5));
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(7));
+		puzzle.getNodes().get(4).addAdjNode(puzzle.getNodes().get(8));
+		
+		puzzle.getNodes().get(5).addAdjNode(puzzle.getNodes().get(2));
+		puzzle.getNodes().get(5).addAdjNode(puzzle.getNodes().get(4));
+		puzzle.getNodes().get(5).addAdjNode(puzzle.getNodes().get(8));
+		puzzle.getNodes().get(5).addAdjNode(puzzle.getNodes().get(9));
+		
+		puzzle.getNodes().get(6).addAdjNode(puzzle.getNodes().get(3));
+		puzzle.getNodes().get(6).addAdjNode(puzzle.getNodes().get(7));
+		
+		puzzle.getNodes().get(7).addAdjNode(puzzle.getNodes().get(3));
+		puzzle.getNodes().get(7).addAdjNode(puzzle.getNodes().get(4));
+		puzzle.getNodes().get(7).addAdjNode(puzzle.getNodes().get(6));
+		puzzle.getNodes().get(7).addAdjNode(puzzle.getNodes().get(8));
+		
+		puzzle.getNodes().get(8).addAdjNode(puzzle.getNodes().get(4));
+		puzzle.getNodes().get(8).addAdjNode(puzzle.getNodes().get(5));
+		puzzle.getNodes().get(8).addAdjNode(puzzle.getNodes().get(7));
+		puzzle.getNodes().get(8).addAdjNode(puzzle.getNodes().get(9));
+		
+		puzzle.getNodes().get(9).addAdjNode(puzzle.getNodes().get(5));
+		puzzle.getNodes().get(9).addAdjNode(puzzle.getNodes().get(8));
+		
+		// TODO: create edges
 	}
 }

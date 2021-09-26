@@ -1,11 +1,13 @@
 package triangles.model;
 
+import java.util.ArrayList;
+
 public class Node {
 	public final int size;
 	boolean isSelected;
 	int x;
 	int y;
-	Node[] adjNodes;
+	ArrayList<Node> adjNodes = new ArrayList<Node>();
 
 	public Node(int size) {
 		this.size = size;
@@ -32,6 +34,6 @@ public class Node {
 		return false;
 	}
 	
-	public Node[] getAdjNodes() { return adjNodes; }
-	public void setAdjNodes(Node[] nodes) { adjNodes = nodes; }
+	public ArrayList<Node> getAdjNodes() { return adjNodes; }
+	public void addAdjNode(Node node) { adjNodes.add(node); }
 }
