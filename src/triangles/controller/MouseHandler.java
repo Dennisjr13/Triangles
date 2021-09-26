@@ -3,7 +3,10 @@ package triangles.controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import triangles.model.Coordinate;
 import triangles.model.Model;
+import triangles.model.Node;
+import triangles.model.TrianglePuzzle;
 import triangles.view.TrianglesApp;
 
 public class MouseHandler extends MouseAdapter {
@@ -18,7 +21,18 @@ public class MouseHandler extends MouseAdapter {
 	
 	@Override
 	public void mousePressed(MouseEvent event) {
-		// TODO: implement Node selection logic here
-		System.out.println("You pressed on " + event.getPoint());
+		Coordinate coord = app.getPuzzlePanel().pointToCoordinate(event.getPoint());
+		TrianglePuzzle puzzle = model.getPuzzle();
+		
+		for (Node node : puzzle.getNodes()) {
+			if (node.contains(coord)) {
+				if (node.isSelected()) {
+					node.setSelected(false);
+				} else {
+					node.setSelected(true);
+				}
+				app.repaint();
+			}
+		}
 	}
 }
