@@ -118,7 +118,7 @@ public class SwapEdgesController {
 		}
 		
 		model.setNumMoves(model.getNumMoves() + 1);
-		model.setScore(model.calculateScore());
+		model.setScore(model.calculateScore() - model.getNumMoves());
 		
 		app.getActualMovesLabel().setText("" + model.getNumMoves());
 		app.getActualScoreLabel().setText("" + model.getScore());
