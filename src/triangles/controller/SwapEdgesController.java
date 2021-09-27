@@ -50,6 +50,8 @@ public class SwapEdgesController {
 			edgesToSwap.get(1).setColor(firstEdgeColor);
 		} else if (edgesToSwap.size() == 3) {
 			// 3 edge swap, special case (rotate clockwise)
+			
+			// first, identify the flat edge
 			Edge flatEdge = null;
 			for (Edge edge : edgesToSwap) {
 				if (edge.getNodes().get(0).getY() == edge.getNodes().get(1).getY()) {
@@ -59,7 +61,7 @@ public class SwapEdgesController {
 			}
 			edgesToSwap.remove(flatEdge);
 			
-			// get middle Node ("tip") to determine triangle orientation
+			// next, identify middle Node ("tip") to determine triangle orientation
 			Node middleNode;
 			if (flatEdge.getNodes().contains(edgesToSwap.get(0).getNodes().get(0))) {
 				middleNode = edgesToSwap.get(0).getNodes().get(1);
@@ -67,11 +69,12 @@ public class SwapEdgesController {
 				middleNode = edgesToSwap.get(0).getNodes().get(0);
 			}
 			
-			// only slanted edges remain in edgesToSwap, now find the left/right
+			// next, identify the left/right edges 
+			// (the flat edge was already removed from edgesToSwap)
 			Edge leftEdge;
 			Edge rightEdge;
 			if (edgesToSwap.get(0).getNodes().get(0).equals(middleNode)) {
-				// we grabbed the middle node (which both edges share),
+				// oops, grabbed the middle node (which both slanted edges share),
 				// use the other node
 				if (edgesToSwap.get(0).getNodes().get(1).getX() < middleNode.getX()) {
 					leftEdge = edgesToSwap.get(0);
@@ -88,6 +91,8 @@ public class SwapEdgesController {
 				rightEdge = edgesToSwap.get(0);
 			}
 
+			// finally, we have all the edges and can determine orientation
+			// (time to swap)
 			Color leftEdgeColor = leftEdge.getColor();
 			Color rightEdgeColor = rightEdge.getColor();
 			Color flatEdgeColor = flatEdge.getColor();
@@ -107,8 +112,13 @@ public class SwapEdgesController {
 			return;
 		}
 		
+		// after successful swap, unselect nodes
+		for (Node node : puzzle.getNodes()) {
+			node.setSelected(false);
+		}
+		
 		model.setNumMoves(model.getNumMoves() + 1);
-		// TODO: calculate score
+		model.setScore(model.calculateScore());
 		
 		app.getActualMovesLabel().setText("" + model.getNumMoves());
 		app.getActualScoreLabel().setText("" + model.getScore());
