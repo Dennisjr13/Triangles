@@ -41,8 +41,6 @@ public class TrianglesDrawer extends JPanel {
 			return;
 		}
 		
-		graphics.drawString("test", 10, 10);
-		
 		// TODO: Draw entire puzzle here
 		TrianglePuzzle puzzle = model.getPuzzle();
 
@@ -70,6 +68,13 @@ public class TrianglesDrawer extends JPanel {
 					node.getY(), 
 					node.getSize(), 
 					node.getSize());
+		}
+
+		if (model.isGameOver()) {
+			graphics.setColor(Color.BLACK);
+			graphics.drawString("Congratulations!!! You’ve finished in only " + 
+					model.getNumMoves() + " moves " +
+					"(Score = " + model.getScore() + ")!", 10, 350);
 		}
 	}
 }

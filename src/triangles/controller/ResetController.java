@@ -28,6 +28,7 @@ public class ResetController {
 			edge.setColor(edge.getInitialColor());
 		}
 		
+		model.setGameOver(false);
 		model.setNumMoves(0);
 		model.setScore(0);
 		

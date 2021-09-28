@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Model {
 	TrianglePuzzle puzzle;
-	boolean gameOver;
+	boolean gameOver = false;
 	int numMoves = 0;
 	int score = 0;
 	
@@ -39,58 +39,30 @@ public class Model {
 	public void setGameOver(boolean flag) { gameOver = flag; }
 	
 	public int calculateScore() {
-		boolean allCorrectColors = true;
 		int calcScore = 0;
 
 		Color t1Color = triangleColor(new int[]{0, 1, 2}); // T1
-		if (t1Color != Color.BLACK) {
-			calcScore += 10;
-			if (t1Color != Color.RED) {
-				allCorrectColors = false;
-			}
-		}
-		
 		Color t2Color = triangleColor(new int[]{1, 3, 4}); // T2
-		if (t2Color != Color.BLACK) {
-			calcScore += 10;
-			if (t2Color != Color.BLUE) {
-				allCorrectColors = false;
-			}
-		}
-		
 		Color t3Color = triangleColor(new int[]{2, 4, 5}); // T3
-		if (t3Color != Color.BLACK) {
-			calcScore += 10;
-			if (t3Color != Color.GREEN) {
-				allCorrectColors = false;
-			}
-		}
-		
 		Color t4Color = triangleColor(new int[]{3, 6, 7}); // T4
-		if (t4Color != Color.BLACK) {
-			calcScore += 10;
-			if (t4Color != Color.GREEN) {
-				allCorrectColors = false;
-			}
-		}
-		
 		Color t5Color = triangleColor(new int[]{4, 7, 8}); // T5
-		if (t5Color != Color.BLACK) {
-			calcScore += 10;
-			if (t5Color != Color.RED) {
-				allCorrectColors = false;
-			}
-		}
-		
 		Color t6Color = triangleColor(new int[]{5, 8, 9}); // T6
-		if (t6Color != Color.BLACK) {
-			calcScore += 10;
-			if (t6Color != Color.BLUE) {
-				allCorrectColors = false;
+		
+		ArrayList<Color> triangleColors =  new ArrayList<Color>(
+				Arrays.asList(t1Color, t2Color, t3Color, t4Color, t5Color, t6Color));
+		
+		for (Color color : triangleColors) {
+			if (color != Color.BLACK) {
+				calcScore += 10;
 			}
 		}
 		
-		if (allCorrectColors) {
+		if (t1Color == Color.RED &&
+			t2Color == Color.BLUE &&
+			t3Color == Color.GREEN &&
+			t4Color == Color.GREEN &&
+			t5Color == Color.RED &&
+			t6Color == Color.BLUE) {
 			setGameOver(true);
 		}
 

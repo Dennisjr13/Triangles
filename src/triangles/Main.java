@@ -2,9 +2,12 @@ package triangles;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import triangles.controller.ExitController;
 import triangles.model.Edge;
 import triangles.model.Model;
 import triangles.model.Node;
@@ -211,5 +214,12 @@ public class Main {
 				new ArrayList<>(Arrays.asList(
 						puzzle.getNodes().get(4), 
 						puzzle.getNodes().get(2)))));
+		
+		trianglesApp.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent we) {
+				new ExitController(trianglesApp).exit();
+			}
+		});
 	}
 }
