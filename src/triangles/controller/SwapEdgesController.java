@@ -31,8 +31,8 @@ public class SwapEdgesController {
 		}
 		
 		if (nodesSelected.size() != 3) {
-			System.out.println("ERROR: User selected " + nodesSelected.size() + 
-					" nodes, must be exactly 3.");
+			System.out.println("ERROR: Invalid swap. " + nodesSelected.size() + 
+					" nodes selected, but must be exactly 3.");
 			return;
 		}
 		
@@ -108,7 +108,8 @@ public class SwapEdgesController {
 				leftEdge.setColor(flatEdgeColor);
 			}
 		} else {
-			System.out.println("ERROR: Invalid state, " + edgesToSwap.size() + " selected.");
+			System.out.println("ERROR: Invalid swap. " + edgesToSwap.size() +
+					" common edges found, must be 2 or 3.");
 			return;
 		}
 		
