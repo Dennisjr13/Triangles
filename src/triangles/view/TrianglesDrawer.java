@@ -40,8 +40,7 @@ public class TrianglesDrawer extends JPanel {
 		if (model == null) {
 			return;
 		}
-		
-		// TODO: Draw entire puzzle here
+
 		TrianglePuzzle puzzle = model.getPuzzle();
 
 		// draw edges first
