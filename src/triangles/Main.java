@@ -35,6 +35,7 @@ public class Main {
 		 *  6()  7()  8()  9()
 		 * 
 		 */
+		
 		// create nodes, with dynamic spacing based on JPanel size
 		Dimension panelSize = trianglesApp.getPuzzlePanel().getSize();
 		puzzle.addNode(new Node(nodeSize, // Node0
