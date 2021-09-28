@@ -23,6 +23,12 @@ public class SwapEdgesController {
 		System.out.println("User clicked Swap Edges.");
 		TrianglePuzzle puzzle = model.getPuzzle();
 		
+		if (model.isGameOver()) { 
+			System.out.println("ERROR: Invalid swap. "
+					+ "You've already won the game, try resetting first..");
+			return; 
+		}
+		
 		ArrayList<Node> nodesSelected = new ArrayList<Node>();
 		for (Node node : puzzle.getNodes()) {
 			if (node.isSelected()) {
@@ -123,6 +129,11 @@ public class SwapEdgesController {
 		
 		app.getActualMovesLabel().setText("" + model.getNumMoves());
 		app.getActualScoreLabel().setText("" + model.getScore());
+		
+		if (model.isGameOver()) {
+			
+		}
+		
 		app.repaint();
 	}
 }
