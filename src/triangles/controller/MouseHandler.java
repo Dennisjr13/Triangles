@@ -24,6 +24,12 @@ public class MouseHandler extends MouseAdapter {
 		Coordinate coord = app.getPuzzlePanel().pointToCoordinate(event.getPoint());
 		TrianglePuzzle puzzle = model.getPuzzle();
 		
+		if (model.isGameOver()) { 
+			System.out.println("ERROR: Invalid select. "
+					+ "You've already won the game, try resetting first..");
+			return; 
+		}
+		
 		for (Node node : puzzle.getNodes()) {
 			if (node.contains(coord)) {
 				if (node.isSelected()) {
