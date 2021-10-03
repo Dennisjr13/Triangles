@@ -56,4 +56,25 @@ public class TestModel extends TestCase {
 		model.createEdges();
 		assertEquals(18, model.getPuzzle().getEdges().size());
 	}
+	
+	public void testCalculateScore() {
+		Model model = new Model();
+		model.setPuzzle(new TrianglePuzzle());
+
+		model.createNodes(new Dimension(800, 800));
+		model.createEdges();
+		
+		assertEquals(0, model.calculateScore());
+		
+		// swap edge colors for nodes [1,2,3]
+		model.getPuzzle().getNodes().get(1).setSelected(true);
+		model.getPuzzle().getNodes().get(2).setSelected(true);
+		model.getPuzzle().getNodes().get(3).setSelected(true);
+		model.trySwap();
+		
+		// T1 is complete and correct color (RED)
+		assertEquals(10, model.calculateScore());
+		
+		// TODO: all 6 triangles completed
+	}
 }
