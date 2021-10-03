@@ -77,4 +77,28 @@ public class TestModel extends TestCase {
 		
 		// TODO: all 6 triangles completed
 	}
+
+	public void testThreeEdgeSwap() {
+		Model model = new Model();
+		model.setPuzzle(new TrianglePuzzle());
+
+		model.createNodes(new Dimension(800, 800));
+		model.createEdges();
+		
+		// verify initial Edge colors
+		for (Edge curEdge : model.getPuzzle().getEdges()) {
+			assertTrue(curEdge.getInitialColor() == curEdge.getColor());
+		}
+		
+		// swap edge colors for nodes [2,4,5]
+		model.getPuzzle().getNodes().get(2).setSelected(true);
+		model.getPuzzle().getNodes().get(4).setSelected(true);
+		model.getPuzzle().getNodes().get(5).setSelected(true);
+		model.trySwap();
+		
+		// T3 rotated clockwise, verify new colors
+		assertTrue(model.getPuzzle().getEdges().get(4).getColor() == model.getPuzzle().getEdges().get(17).getInitialColor()); // RED edge is now BLUE
+		assertTrue(model.getPuzzle().getEdges().get(10).getColor() == model.getPuzzle().getEdges().get(4).getInitialColor()); // GREEN edge is now RED
+		assertTrue(model.getPuzzle().getEdges().get(17).getColor() == model.getPuzzle().getEdges().get(10).getInitialColor()); // BLUE edge is now GREEN
+	}
 }
