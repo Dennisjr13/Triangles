@@ -41,6 +41,8 @@ public class Model {
 	public void setGameOver(boolean flag) { gameOver = flag; }
 	
 	public void createNodes(Dimension panelSize) {
+		puzzle.reset();
+		
 		// create nodes, with dynamic spacing based on JPanel size
 		puzzle.addNode(new Node(nodeSize, // Node0
 				4*(panelSize.width/8) - (nodeSize/2), 
