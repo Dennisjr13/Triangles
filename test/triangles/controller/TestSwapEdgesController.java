@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import junit.framework.TestCase;
 import triangles.model.Edge;
 import triangles.model.Model;
-import triangles.model.Node;
 import triangles.model.TrianglePuzzle;
 import triangles.view.TrianglesApp;
 
